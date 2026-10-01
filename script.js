@@ -302,14 +302,19 @@ function enterMoneyWorld() {
 
 function formatMoneyInput(input) {
 
-    let value = input.value.replace(/[^0-9]/g, "");
+    let value = input.value.replace(/,/g, "");
+
+    value = value.replace(/\D/g, "");
 
     if (value === "") {
         input.value = "";
         return;
     }
 
-    input.value = Number(value).toLocaleString("en-US");
+    input.value = value.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ","
+    );
 
 }
 
