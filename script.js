@@ -295,3 +295,43 @@ function enterMoneyWorld() {
     alert("Your Money World is coming next ♡");
 
 }
+
+/* ========================================
+   AUTOMATIC MONEY FORMAT
+======================================== */
+
+function formatMoneyInput(input) {
+
+    let value = input.value.replace(/[^0-9]/g, "");
+
+    if (value === "") {
+        input.value = "";
+        return;
+    }
+
+    input.value = Number(value).toLocaleString("en-US");
+
+}
+
+
+/* ========================================
+   APPLY MONEY FORMATTER
+======================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const moneyInputs = document.querySelectorAll(
+        "#startingBalance, #monthlyIncome, #monthlyBudget, #goalAmount"
+    );
+
+    moneyInputs.forEach(function (input) {
+
+        input.addEventListener("input", function () {
+
+            formatMoneyInput(input);
+
+        });
+
+    });
+
+});
