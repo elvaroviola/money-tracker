@@ -969,3 +969,518 @@ body {
 .splash-button:active {
     transform: translateY(0);
 }
+
+/* ========================================
+   MONEY SETUP / MONEY JOURNEY
+======================================== */
+
+.money-setup-page {
+    min-height: 100vh;
+    background: #fdf3ef;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 50px 20px;
+}
+
+.money-setup-content {
+    width: 100%;
+    max-width: 650px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ========================================
+   PROGRESS
+======================================== */
+
+.setup-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.progress-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ead5cf;
+
+    transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+    width: 12px;
+    height: 12px;
+
+    background: #c9786d;
+}
+
+.progress-line {
+    width: 45px;
+    height: 2px;
+
+    background: #ead5cf;
+}
+
+
+/* ========================================
+   SETUP STEPS
+======================================== */
+
+.setup-step {
+    display: none;
+
+    animation: setupFade 0.35s ease;
+}
+
+.setup-step.active {
+    display: block;
+}
+
+@keyframes setupFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   CHARACTERS
+======================================== */
+
+.setup-character {
+    width: 145px;
+    height: 145px;
+
+    object-fit: contain;
+
+    margin-bottom: 8px;
+
+    animation:
+        gentleFloat
+        3s
+        ease-in-out
+        infinite;
+}
+
+.dog-setup-character {
+    animation:
+        characterFloatRight
+        3.2s
+        ease-in-out
+        infinite;
+}
+
+
+/* ========================================
+   TEXT
+======================================== */
+
+.setup-eyebrow {
+    color: #b56e64;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+.setup-step h1 {
+    color: #6b4035;
+
+    font-size: 34px;
+
+    line-height: 1.25;
+
+    font-weight: 600;
+
+    margin-bottom: 13px;
+}
+
+.setup-description {
+    color: #987166;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 24px;
+}
+
+
+/* ========================================
+   MONEY INPUT
+======================================== */
+
+.money-input-wrapper {
+    width: 100%;
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    background: #fffaf7;
+
+    border: 1px solid #e5cbc4;
+
+    border-radius: 15px;
+
+    padding: 5px 17px;
+
+    transition: all 0.2s ease;
+}
+
+.money-input-wrapper:focus-within {
+    border-color: #c9786d;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 120, 109, 0.10);
+}
+
+.money-input-wrapper > span {
+    color: #b56e64;
+
+    font-size: 15px;
+
+    margin-right: 8px;
+}
+
+.money-input-wrapper input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #6b4035;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 22px;
+
+    padding: 12px 0;
+}
+
+.money-input-wrapper input::placeholder {
+    color: #d1b7af;
+}
+
+.input-hint {
+    color: #b18b81;
+
+    font-size: 11px;
+
+    margin-top: 9px;
+
+    margin-bottom: 24px;
+}
+
+
+/* ========================================
+   OPTIONS
+======================================== */
+
+.option-grid {
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto 23px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.setup-option {
+    border: 1px solid #ecd7d1;
+
+    background: #fffaf7;
+
+    color: #7b554c;
+
+    border-radius: 14px;
+
+    padding: 12px 8px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.setup-option span {
+    display: block;
+
+    font-size: 19px;
+
+    margin-bottom: 5px;
+}
+
+.setup-option:hover {
+    transform: translateY(-2px);
+
+    border-color: #dca9a0;
+}
+
+.setup-option.selected {
+    background: #ead0ca;
+
+    border-color: #c9786d;
+
+    color: #6b4035;
+
+    box-shadow:
+        0 5px 12px rgba(126, 76, 65, 0.08);
+}
+
+
+/* ========================================
+   QUESTIONS
+======================================== */
+
+.setup-question {
+    width: 100%;
+    max-width: 390px;
+
+    margin: 0 auto 18px;
+
+    text-align: left;
+}
+
+.setup-question label {
+    display: block;
+
+    color: #6b4035;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+.small-input {
+    max-width: none;
+}
+
+.text-input {
+    width: 100%;
+
+    border: 1px solid #e5cbc4;
+
+    background: #fffaf7;
+
+    color: #6b4035;
+
+    border-radius: 12px;
+
+    padding: 13px 15px;
+
+    outline: none;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+}
+
+.text-input:focus {
+    border-color: #c9786d;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 120, 109, 0.10);
+}
+
+.text-input::placeholder {
+    color: #c5aaa2;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.setup-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.setup-button {
+    border: none;
+
+    background: #c9786d;
+
+    color: white;
+
+    padding: 13px 32px;
+
+    border-radius: 13px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.setup-button:hover {
+    background: #b9685d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(185, 104, 93, 0.18);
+}
+
+.back-button {
+    border: none;
+
+    background: transparent;
+
+    color: #a98278;
+
+    padding: 13px 18px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: #6b4035;
+}
+
+
+/* ========================================
+   COMPLETE SCREEN
+======================================== */
+
+.setup-success-image {
+    width: 240px;
+    height: 170px;
+
+    object-fit: contain;
+
+    margin-bottom: 5px;
+}
+
+
+/* ========================================
+   DECORATIONS
+======================================== */
+
+.setup-sparkle {
+    position: absolute;
+
+    color: #d99587;
+
+    font-size: 25px;
+
+    user-select: none;
+}
+
+.setup-sparkle-one {
+    top: 20%;
+    left: 20%;
+}
+
+.setup-sparkle-two {
+    bottom: 20%;
+    right: 20%;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .money-setup-page {
+        padding: 30px 18px;
+    }
+
+    .setup-step h1 {
+        font-size: 28px;
+    }
+
+    .setup-character {
+        width: 115px;
+        height: 115px;
+    }
+
+    .option-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .progress-line {
+        width: 25px;
+    }
+
+    .setup-sparkle-one {
+        left: 8%;
+    }
+
+    .setup-sparkle-two {
+        right: 8%;
+    }
+
+}
