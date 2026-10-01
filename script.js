@@ -158,13 +158,140 @@ function goToWelcome() {
 
 }
 
-
 /* ========================================
-   GO TO DASHBOARD
+   MONEY SETUP / MONEY JOURNEY
 ======================================== */
 
-function goToDashboard() {
 
-    alert("Dashboard is coming next ♡");
+/* START MONEY SETUP */
+
+function startMoneySetup() {
+
+    document
+        .getElementById("welcomePage")
+        .style.display = "none";
+
+    document
+        .getElementById("moneySetupPage")
+        .style.display = "flex";
+
+    showSetupStep(1);
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* ========================================
+   SHOW SETUP STEP
+======================================== */
+
+function showSetupStep(step) {
+
+    const steps =
+        document.querySelectorAll(".setup-step");
+
+    steps.forEach(function(stepElement) {
+
+        stepElement.classList.remove("active");
+
+    });
+
+
+    const selectedStep =
+        document.getElementById(
+            "setupStep" + step
+        );
+
+
+    if (selectedStep) {
+
+        selectedStep.classList.add("active");
+
+    }
+
+
+    updateSetupProgress(step);
+
+}
+
+
+/* ========================================
+   MOVE BETWEEN STEPS
+======================================== */
+
+function nextSetupStep(step) {
+
+    showSetupStep(step);
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* ========================================
+   PROGRESS DOTS
+======================================== */
+
+function updateSetupProgress(step) {
+
+    const dots =
+        document.querySelectorAll(".progress-dot");
+
+
+    dots.forEach(function(dot, index) {
+
+        if (index < step) {
+
+            dot.classList.add("active");
+
+        } else {
+
+            dot.classList.remove("active");
+
+        }
+
+    });
+
+}
+
+
+/* ========================================
+   SELECT OPTIONS
+======================================== */
+
+function toggleOption(button) {
+
+    button.classList.toggle("selected");
+
+}
+
+
+/* ========================================
+   FINISH MONEY SETUP
+======================================== */
+
+function finishMoneySetup() {
+
+    document
+        .getElementById("setupStep4")
+        .classList.remove("active");
+
+    document
+        .getElementById("setupComplete")
+        .classList.add("active");
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* ========================================
+   ENTER MONEY WORLD
+======================================== */
+
+function enterMoneyWorld() {
+
+    alert("Your Money World is coming next ♡");
 
 }
