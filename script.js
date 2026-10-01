@@ -328,7 +328,53 @@ function finishMoneySetup() {
 
 function enterMoneyWorld() {
 
-    alert("Your Money World is coming next ♡");
+    const savedData = localStorage.getItem("moneySetup");
+
+    if (!savedData) {
+        alert("Your money setup is not available yet ♡");
+        return;
+    }
+
+    const moneyData = JSON.parse(savedData);
+
+    // Sembunyikan Money Setup
+    document.getElementById("moneySetupPage").style.display = "none";
+
+    // Tampilkan Dashboard
+    document.getElementById("dashboardPage").style.display = "block";
+
+    // Tampilkan Starting Balance
+    document.getElementById("dashboardBalance").textContent =
+        formatRupiah(moneyData.startingBalance);
+
+    // Tampilkan Monthly Income
+    document.getElementById("dashboardIncome").textContent =
+        formatRupiah(moneyData.monthlyIncome);
+
+    // Tampilkan Monthly Budget
+    document.getElementById("dashboardBudget").textContent =
+        formatRupiah(moneyData.monthlyBudget);
+
+    // Tampilkan Goal Name
+    document.getElementById("dashboardGoalName").textContent =
+        moneyData.goalName || "Your Goal";
+
+    // Tampilkan Goal Amount
+    document.getElementById("dashboardGoalAmount").textContent =
+        formatRupiah(moneyData.goalAmount);
+
+    // Goal baru dimulai dari 0%
+    document.getElementById("goalProgressFill").style.width = "0%";
+
+    document.getElementById("goalProgressText").textContent =
+        "0% completed";
+
+    window.scrollTo(0, 0);
+}
+
+function formatRupiah(amount) {
+
+    return "Rp " + Number(amount || 0).toLocaleString("en-US");
 
 }
 
