@@ -38,223 +38,78 @@
 
     </main>
 
-    <!-- =========================
-         AUTH PAGE
-    ========================== -->
+   <!-- =========================
+     WELCOME!
+========================== -->
 
-    <main class="auth-page" id="authPage">
+<main class="welcome-page" id="welcomePage">
 
-        <div class="auth-decoration sparkle auth-sparkle-one">✦</div>
-        <div class="auth-decoration sparkle auth-sparkle-two">✧</div>
+    <div class="sparkle welcome-sparkle-one">✦</div>
+    <div class="sparkle welcome-sparkle-two">✧</div>
 
-        <section class="auth-card">
+    <section class="welcome-content">
 
-            <!-- Small Logo -->
+        <p class="welcome-small-title">
+            A new beginning ♡
+        </p>
+
+        <h1>
+            Welcome to<br>
+            Money Tracker!
+        </h1>
+
+        <p class="welcome-text">
+            We're so happy you're here.
+            <br>
+            Let's start your money journey together.
+        </p>
+
+        <!-- Characters -->
+
+        <div class="welcome-characters">
 
             <img
-                src="assets/logo%20cat.png"
-                alt="Money Tracker"
-                class="auth-logo"
+                src="assets/cat%20character.png"
+                alt="Cat"
+                class="welcome-cat"
             >
 
-
-            <!-- Heading -->
-
-            <div class="auth-heading">
-
-                <h1 id="authTitle">Welcome back!</h1>
-
-                <p id="authSubtitle">
-                    Let's keep your money journey organized ♡
-                </p>
-
-            </div>
-
-
-            <!-- Login / Create Account Toggle -->
-
-            <div class="auth-tabs">
-
-                <button
-                    class="auth-tab active"
-                    id="loginTab"
-                    onclick="showLogin()"
-                >
-                    Login
-                </button>
-
-                <button
-                    class="auth-tab"
-                    id="registerTab"
-                    onclick="showRegister()"
-                >
-                    Create Account
-                </button>
-
-            </div>
-
-
-            <!-- =========================
-                 LOGIN FORM
-            ========================== -->
-
-            <form
-                class="auth-form"
-                id="loginForm"
-                onsubmit="handleLogin(event)"
+            <img
+                src="assets/dog%20character.png"
+                alt="Dog"
+                class="welcome-dog"
             >
 
-                <div class="input-group">
+        </div>
 
-                    <label for="loginEmail">
-                        Email
-                    </label>
+        <!-- Character Introduction -->
 
-                    <input
-                        type="email"
-                        id="loginEmail"
-                        placeholder="your@email.com"
-                        required
-                    >
+        <div class="character-intro">
 
-                </div>
-
-
-                <div class="input-group">
-
-                    <label for="loginPassword">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter your password"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="forgot-password">
-                    <button type="button">
-                        Forgot password?
-                    </button>
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="auth-button"
-                >
-                    Login ♡
-                </button>
-
-            </form>
-
-
-            <!-- =========================
-                 REGISTER FORM
-            ========================== -->
-
-            <form
-                class="auth-form hidden"
-                id="registerForm"
-                onsubmit="handleRegister(event)"
-            >
-
-                <div class="input-group">
-
-                    <label for="registerName">
-                        Your Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="registerName"
-                        placeholder="What should we call you?"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label for="registerEmail">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="registerEmail"
-                        placeholder="your@email.com"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label for="registerPassword">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="registerPassword"
-                        placeholder="Create a password"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label for="confirmPassword">
-                        Confirm Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Enter your password again"
-                        required
-                    >
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="auth-button"
-                >
-                    Create Account ♡
-                </button>
-
-            </form>
-
-
-            <!-- Bottom Text -->
-
-            <p class="auth-footer" id="authFooter">
-
-                New here?
-                <button
-                    type="button"
-                    onclick="showRegister()"
-                >
-                    Create an account
-                </button>
-
+            <p>
+                <strong>Hi! I'm Mimi ♡</strong>
+                <br>
+                I'll help you keep things organized.
             </p>
 
-        </section>
+            <p>
+                <strong>And I'm Milo!</strong>
+                <br>
+                I'll be here whenever you need a little help.
+            </p>
 
-    </main>
+        </div>
 
+        <button
+            class="welcome-button"
+            onclick="goToDashboard()"
+        >
+            Let's begin ♡
+        </button>
+
+    </section>
+
+</main>
 
     <script src="script.js"></script>
 
