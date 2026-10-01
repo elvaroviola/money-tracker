@@ -663,3 +663,42 @@ body {
     }
 
 }
+
+/* ========================================
+   SPLASH BUTTON
+======================================== */
+
+.splash-button {
+    border: none;
+
+    background: #c9786d;
+
+    color: white;
+
+    padding: 13px 38px;
+
+    border-radius: 14px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-top: 22px;
+
+    transition: all 0.2s ease;
+}
+
+.splash-button:hover {
+    background: #b9685d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(185, 104, 93, 0.18);
+}
+
+.splash-button:active {
+    transform: translateY(0);
+}
