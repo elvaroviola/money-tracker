@@ -317,11 +317,20 @@ function formatMoneyInput(input) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const startingBalance = document.getElementById("startingBalance");
+    const moneyInputs = [
+        "startingBalance",
+        "monthlyIncome",
+        "monthlyBudget",
+        "goalAmount"
+    ];
 
-    if (startingBalance) {
-        startingBalance.addEventListener("input", function () {
-            formatMoneyInput(this);
-        });
-    }
+    moneyInputs.forEach(function (id) {
+        const input = document.getElementById(id);
+
+        if (input) {
+            input.addEventListener("input", function () {
+                formatMoneyInput(this);
+            });
+        }
+    });
 });
