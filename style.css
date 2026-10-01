@@ -328,3 +328,359 @@ body {
     }
 
 }
+
+/* ========================================
+   AUTH PAGE
+======================================== */
+
+.auth-page {
+    min-height: 100vh;
+    background: #fdf3ef;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 40px 20px;
+}
+
+
+/* ========================================
+   AUTH CARD
+======================================== */
+
+.auth-card {
+    width: 100%;
+    max-width: 430px;
+
+    background: rgba(255, 250, 247, 0.95);
+
+    border: 1px solid #efd8d1;
+
+    border-radius: 28px;
+
+    padding: 38px 42px 30px;
+
+    box-shadow:
+        0 20px 50px rgba(126, 76, 65, 0.08);
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ========================================
+   AUTH LOGO
+======================================== */
+
+.auth-logo {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 18px;
+
+    animation: gentleFloat 3s ease-in-out infinite;
+}
+
+
+/* ========================================
+   HEADING
+======================================== */
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-heading h1 {
+    color: #6b4035;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.auth-heading p {
+    color: #987166;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   LOGIN / REGISTER TABS
+======================================== */
+
+.auth-tabs {
+    display: flex;
+
+    background: #f5e5e0;
+
+    border-radius: 14px;
+
+    padding: 4px;
+
+    margin-bottom: 26px;
+}
+
+.auth-tab {
+    flex: 1;
+
+    border: none;
+    background: transparent;
+
+    padding: 11px 8px;
+
+    border-radius: 11px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 14px;
+
+    color: #9b7167;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.auth-tab.active {
+    background: #fffaf7;
+
+    color: #6b4035;
+
+    box-shadow:
+        0 3px 10px rgba(126, 76, 65, 0.08);
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.auth-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+}
+
+.auth-form.hidden {
+    display: none;
+}
+
+
+/* ========================================
+   INPUT
+======================================== */
+
+.input-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.input-group label {
+    color: #6b4035;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #e5cbc4;
+
+    border-radius: 12px;
+
+    background: #fffdfb;
+
+    color: #6b4035;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+.input-group input::placeholder {
+    color: #c4aaa2;
+}
+
+.input-group input:focus {
+    border-color: #c9786d;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 120, 109, 0.10);
+}
+
+
+/* ========================================
+   FORGOT PASSWORD
+======================================== */
+
+.forgot-password {
+    text-align: right;
+
+    margin-top: -7px;
+}
+
+.forgot-password button {
+    border: none;
+
+    background: transparent;
+
+    color: #b56e64;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   MAIN BUTTON
+======================================== */
+
+.auth-button {
+    width: 100%;
+
+    border: none;
+
+    background: #c9786d;
+
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-top: 4px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.auth-button:hover {
+    background: #b9685d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(185, 104, 93, 0.18);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.auth-footer {
+    text-align: center;
+
+    color: #987166;
+
+    font-size: 13px;
+
+    margin-top: 23px;
+}
+
+.auth-footer button {
+    border: none;
+
+    background: transparent;
+
+    color: #b56e64;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   DECORATIONS
+======================================== */
+
+.auth-sparkle-one {
+    top: 20%;
+    left: 20%;
+}
+
+.auth-sparkle-two {
+    bottom: 22%;
+    right: 20%;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        padding: 25px 18px;
+    }
+
+    .auth-card {
+        padding: 32px 25px 27px;
+
+        border-radius: 24px;
+    }
+
+    .auth-logo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .auth-heading h1 {
+        font-size: 27px;
+    }
+
+    .auth-sparkle-one {
+        left: 8%;
+    }
+
+    .auth-sparkle-two {
+        right: 8%;
+    }
+}
