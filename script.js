@@ -301,42 +301,27 @@ function enterMoneyWorld() {
 ======================================== */
 
 function formatMoneyInput(input) {
+    let value = input.value;
 
-    let value = input.value.replace(/,/g, "");
-
+    // Ambil angka saja
     value = value.replace(/\D/g, "");
 
+    // Kalau kosong, biarkan kosong
     if (value === "") {
         input.value = "";
         return;
     }
 
-    input.value = value.replace(
-        /\B(?=(\d{3})+(?!\d))/g,
-        ","
-    );
-
+    // Tambahkan koma setiap 3 angka
+    input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-/* ========================================
-   APPLY MONEY FORMATTER
-======================================== */
-
 document.addEventListener("DOMContentLoaded", function () {
+    const startingBalance = document.getElementById("startingBalance");
 
-    const moneyInputs = document.querySelectorAll(
-        "#startingBalance, #monthlyIncome, #monthlyBudget, #goalAmount"
-    );
-
-    moneyInputs.forEach(function (input) {
-
-        input.addEventListener("input", function () {
-
-            formatMoneyInput(input);
-
+    if (startingBalance) {
+        startingBalance.addEventListener("input", function () {
+            formatMoneyInput(this);
         });
-
-    });
-
+    }
 });
