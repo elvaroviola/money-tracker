@@ -8,17 +8,13 @@
    SPLASH → AUTH PAGE
 ======================================== */
 
-window.addEventListener("load", function () {
+function goToAuth() {
 
-    setTimeout(function () {
+    document.getElementById("splashScreen").style.display = "none";
 
-        document.getElementById("splashScreen").style.display = "none";
+    document.getElementById("authPage").style.display = "flex";
 
-        document.getElementById("authPage").style.display = "flex";
-
-    }, 2500);
-
-});
+}
 
 
 /* ========================================
