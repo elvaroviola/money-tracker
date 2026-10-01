@@ -411,7 +411,7 @@
 
             <button
                 class="welcome-button"
-                onclick="goToDashboard()"
+                onclick="startMoneySetup()"
             >
                 Let's begin♡
             </button>
@@ -420,6 +420,497 @@
         </section>
 
     </main>
+
+    <main
+    class="money-setup-page"
+    id="moneySetupPage"
+>
+
+    <div class="setup-sparkle setup-sparkle-one">
+        ✦
+    </div>
+
+    <div class="setup-sparkle setup-sparkle-two">
+        ✧
+    </div>
+
+
+    <section class="money-setup-content">
+
+
+        <!-- PROGRESS -->
+
+        <div class="setup-progress">
+
+            <span class="progress-dot active"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-line"></span>
+            <span class="progress-dot"></span>
+
+        </div>
+
+
+        <!-- =========================
+             STEP 1 — BALANCE
+        ========================== -->
+
+        <div
+            class="setup-step active"
+            id="setupStep1"
+        >
+
+            <img
+                src="assets/cat%20character.png"
+                alt="Cat"
+                class="setup-character"
+            >
+
+            <p class="setup-eyebrow">
+                Step 1 of 4
+            </p>
+
+            <h1>
+                Let's start<br>
+                from where you are ♡
+            </h1>
+
+            <p class="setup-description">
+                How much money do you have
+                right now?
+            </p>
+
+            <div class="money-input-wrapper">
+
+                <span>Rp</span>
+
+                <input
+                    type="number"
+                    id="startingBalance"
+                    placeholder="0"
+                    min="0"
+                >
+
+            </div>
+
+            <p class="input-hint">
+                You can include your cash,
+                bank accounts, or e-wallets.
+            </p>
+
+            <button
+                class="setup-button"
+                onclick="nextSetupStep(2)"
+            >
+                Continue ♡
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             STEP 2 — INCOME
+        ========================== -->
+
+        <div
+            class="setup-step"
+            id="setupStep2"
+        >
+
+            <img
+                src="assets/dog%20character.png"
+                alt="Dog"
+                class="setup-character dog-setup-character"
+            >
+
+            <p class="setup-eyebrow">
+                Step 2 of 4
+            </p>
+
+            <h1>
+                Where does your<br>
+                money come from?
+            </h1>
+
+            <p class="setup-description">
+                Choose the income sources
+                that apply to you.
+            </p>
+
+
+            <div class="option-grid">
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>💼</span>
+                    Salary
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>✨</span>
+                    Freelance
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🛍️</span>
+                    Business
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🏠</span>
+                    Allowance
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>♡</span>
+                    Other
+                </button>
+
+            </div>
+
+
+            <div class="setup-question">
+
+                <label>
+                    Approximately how much do you
+                    receive each month?
+                </label>
+
+                <div class="money-input-wrapper small-input">
+
+                    <span>Rp</span>
+
+                    <input
+                        type="number"
+                        id="monthlyIncome"
+                        placeholder="0"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="setup-navigation">
+
+                <button
+                    class="back-button"
+                    onclick="nextSetupStep(1)"
+                >
+                    Back
+                </button>
+
+                <button
+                    class="setup-button"
+                    onclick="nextSetupStep(3)"
+                >
+                    Continue ♡
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             STEP 3 — EXPENSE
+        ========================== -->
+
+        <div
+            class="setup-step"
+            id="setupStep3"
+        >
+
+            <img
+                src="assets/cat%20character.png"
+                alt="Cat"
+                class="setup-character"
+            >
+
+            <p class="setup-eyebrow">
+                Step 3 of 4
+            </p>
+
+            <h1>
+                Where does your<br>
+                money usually go?
+            </h1>
+
+            <p class="setup-description">
+                Pick the things you spend money on.
+            </p>
+
+
+            <div class="option-grid">
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🍜</span>
+                    Food
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🚆</span>
+                    Transport
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🛍️</span>
+                    Shopping
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>💡</span>
+                    Bills
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>💄</span>
+                    Beauty
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>🎮</span>
+                    Entertainment
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>📚</span>
+                    Education
+                </button>
+
+                <button
+                    class="setup-option"
+                    onclick="toggleOption(this)"
+                >
+                    <span>♡</span>
+                    Other
+                </button>
+
+            </div>
+
+
+            <div class="setup-question">
+
+                <label>
+                    Set a monthly spending limit?
+                </label>
+
+                <div class="money-input-wrapper small-input">
+
+                    <span>Rp</span>
+
+                    <input
+                        type="number"
+                        id="monthlyBudget"
+                        placeholder="Optional"
+                        min="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="setup-navigation">
+
+                <button
+                    class="back-button"
+                    onclick="nextSetupStep(2)"
+                >
+                    Back
+                </button>
+
+                <button
+                    class="setup-button"
+                    onclick="nextSetupStep(4)"
+                >
+                    Continue ♡
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             STEP 4 — GOAL
+        ========================== -->
+
+        <div
+            class="setup-step"
+            id="setupStep4"
+        >
+
+            <img
+                src="assets/dog%20character.png"
+                alt="Dog"
+                class="setup-character dog-setup-character"
+            >
+
+            <p class="setup-eyebrow">
+                Step 4 of 4
+            </p>
+
+            <h1>
+                Is there something<br>
+                you're saving for? ♡
+            </h1>
+
+            <p class="setup-description">
+                Give your money a little destination.
+            </p>
+
+
+            <div class="goal-inputs">
+
+                <div class="setup-question">
+
+                    <label>
+                        Goal name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="goalName"
+                        class="text-input"
+                        placeholder="New laptop, trip, emergency fund..."
+                    >
+
+                </div>
+
+
+                <div class="setup-question">
+
+                    <label>
+                        Target amount
+                    </label>
+
+                    <div class="money-input-wrapper small-input">
+
+                        <span>Rp</span>
+
+                        <input
+                            type="number"
+                            id="goalAmount"
+                            placeholder="0"
+                            min="0"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="input-hint">
+                You can skip this for now ♡
+            </p>
+
+
+            <div class="setup-navigation">
+
+                <button
+                    class="back-button"
+                    onclick="nextSetupStep(3)"
+                >
+                    Back
+                </button>
+
+                <button
+                    class="setup-button"
+                    onclick="finishMoneySetup()"
+                >
+                    Finish ♡
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             COMPLETE
+        ========================== -->
+
+        <div
+            class="setup-step"
+            id="setupComplete"
+        >
+
+            <img
+                src="assets/welcome%20assets.png"
+                alt="Welcome"
+                class="setup-success-image"
+            >
+
+            <p class="setup-eyebrow">
+                Your journey begins here
+            </p>
+
+            <h1>
+                You're all set! ♡
+            </h1>
+
+            <p class="setup-description">
+                We've got your starting point.
+                <br>
+                Now let's make your money story
+                a little easier to follow.
+            </p>
+
+
+            <button
+                class="setup-button"
+                onclick="enterMoneyWorld()"
+            >
+                Enter My Money World ♡
+            </button>
+
+        </div>
+
+
+    </section>
+
+</main>
 
 
 
