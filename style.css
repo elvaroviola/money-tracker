@@ -416,166 +416,182 @@ body {
     line-height: 1.5;
 }
 
-
 /* ========================================
-   LOGIN / REGISTER TABS
+   WELCOME
 ======================================== */
 
-.auth-tabs {
-    display: flex;
+.welcome-page {
+    min-height: 100vh;
 
-    background: #f5e5e0;
+    background: #fdf3ef;
 
-    border-radius: 14px;
+    display: none;
 
-    padding: 4px;
+    align-items: center;
+    justify-content: center;
 
-    margin-bottom: 26px;
+    position: relative;
+    overflow: hidden;
+
+    padding: 50px 20px;
 }
 
-.auth-tab {
-    flex: 1;
+.welcome-content {
+    width: 100%;
+    max-width: 650px;
 
-    border: none;
-    background: transparent;
+    text-align: center;
 
-    padding: 11px 8px;
+    position: relative;
+    z-index: 2;
+}
 
-    border-radius: 11px;
-
-    font-family: Georgia, "Times New Roman", serif;
+.welcome-small-title {
+    color: #b56e64;
 
     font-size: 14px;
 
-    color: #9b7167;
+    letter-spacing: 1px;
 
-    cursor: pointer;
-
-    transition: all 0.25s ease;
+    margin-bottom: 12px;
 }
 
-.auth-tab.active {
-    background: #fffaf7;
-
+.welcome-content h1 {
     color: #6b4035;
 
-    box-shadow:
-        0 3px 10px rgba(126, 76, 65, 0.08);
+    font-size: 42px;
+
+    line-height: 1.2;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+.welcome-text {
+    color: #987166;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
 }
 
 
 /* ========================================
-   FORM
+   CHARACTERS
 ======================================== */
 
-.auth-form {
+.welcome-characters {
+    height: 270px;
+
     display: flex;
 
-    flex-direction: column;
+    align-items: flex-end;
 
-    gap: 17px;
+    justify-content: center;
+
+    gap: 20px;
+
+    margin: 10px auto 20px;
 }
 
-.auth-form.hidden {
-    display: none;
+.welcome-cat,
+.welcome-dog {
+    width: 190px;
+
+    height: 250px;
+
+    object-fit: contain;
+}
+
+.welcome-cat {
+    animation: characterFloatLeft 3s ease-in-out infinite;
+}
+
+.welcome-dog {
+    animation: characterFloatRight 3.2s ease-in-out infinite;
+}
+
+@keyframes characterFloatLeft {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes characterFloatRight {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }
 
 
 /* ========================================
-   INPUT
+   CHARACTER INTRO
 ======================================== */
 
-.input-group {
+.character-intro {
     display: flex;
 
-    flex-direction: column;
+    justify-content: center;
 
-    gap: 7px;
+    gap: 25px;
+
+    margin-bottom: 25px;
 }
 
-.input-group label {
-    color: #6b4035;
+.character-intro p {
+    width: 220px;
+
+    color: #987166;
 
     font-size: 13px;
 
-    font-weight: 600;
+    line-height: 1.6;
 }
 
-.input-group input {
-    width: 100%;
-
-    padding: 13px 15px;
-
-    border: 1px solid #e5cbc4;
-
-    border-radius: 12px;
-
-    background: #fffdfb;
-
+.character-intro strong {
     color: #6b4035;
 
-    font-family: Georgia, "Times New Roman", serif;
-
     font-size: 14px;
-
-    outline: none;
-
-    transition: all 0.2s ease;
-}
-
-.input-group input::placeholder {
-    color: #c4aaa2;
-}
-
-.input-group input:focus {
-    border-color: #c9786d;
-
-    box-shadow:
-        0 0 0 3px rgba(201, 120, 109, 0.10);
 }
 
 
 /* ========================================
-   FORGOT PASSWORD
+   WELCOME BUTTON
 ======================================== */
 
-.forgot-password {
-    text-align: right;
-
-    margin-top: -7px;
-}
-
-.forgot-password button {
-    border: none;
-
-    background: transparent;
-
-    color: #b56e64;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 12px;
-
-    cursor: pointer;
-}
-
-
-/* ========================================
-   MAIN BUTTON
-======================================== */
-
-.auth-button {
-    width: 100%;
-
+.welcome-button {
     border: none;
 
     background: #c9786d;
 
     color: white;
 
-    padding: 14px;
+    padding: 14px 40px;
 
-    border-radius: 13px;
+    border-radius: 14px;
 
     font-family: Georgia, "Times New Roman", serif;
 
@@ -583,15 +599,10 @@ body {
 
     cursor: pointer;
 
-    margin-top: 4px;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.auth-button:hover {
+.welcome-button:hover {
     background: #b9685d;
 
     transform: translateY(-2px);
@@ -600,54 +611,19 @@ body {
         0 8px 18px rgba(185, 104, 93, 0.18);
 }
 
-.auth-button:active {
-    transform: translateY(0);
-}
-
 
 /* ========================================
-   FOOTER
+   WELCOME SPARKLES
 ======================================== */
 
-.auth-footer {
-    text-align: center;
-
-    color: #987166;
-
-    font-size: 13px;
-
-    margin-top: 23px;
+.welcome-sparkle-one {
+    top: 18%;
+    left: 18%;
 }
 
-.auth-footer button {
-    border: none;
-
-    background: transparent;
-
-    color: #b56e64;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-
-/* ========================================
-   DECORATIONS
-======================================== */
-
-.auth-sparkle-one {
-    top: 20%;
-    left: 20%;
-}
-
-.auth-sparkle-two {
-    bottom: 22%;
-    right: 20%;
+.welcome-sparkle-two {
+    bottom: 20%;
+    right: 18%;
 }
 
 
@@ -657,30 +633,33 @@ body {
 
 @media (max-width: 600px) {
 
-    .auth-page {
-        padding: 25px 18px;
+    .welcome-content h1 {
+        font-size: 34px;
     }
 
-    .auth-card {
-        padding: 32px 25px 27px;
-
-        border-radius: 24px;
+    .welcome-text {
+        font-size: 14px;
     }
 
-    .auth-logo {
-        width: 65px;
-        height: 65px;
+    .welcome-characters {
+        height: 220px;
+
+        gap: 5px;
     }
 
-    .auth-heading h1 {
-        font-size: 27px;
+    .welcome-cat,
+    .welcome-dog {
+        width: 145px;
+        height: 210px;
     }
 
-    .auth-sparkle-one {
-        left: 8%;
+    .character-intro {
+        gap: 10px;
     }
 
-    .auth-sparkle-two {
-        right: 8%;
+    .character-intro p {
+        width: 160px;
+        font-size: 12px;
     }
+
 }
