@@ -273,6 +273,43 @@ function toggleOption(button) {
 
 function finishMoneySetup() {
 
+    const startingBalance = document
+        .getElementById("startingBalance")
+        .value
+        .replace(/,/g, "");
+
+    const monthlyIncome = document
+        .getElementById("monthlyIncome")
+        .value
+        .replace(/,/g, "");
+
+    const monthlyBudget = document
+        .getElementById("monthlyBudget")
+        .value
+        .replace(/,/g, "");
+
+    const goalName = document
+        .getElementById("goalName")
+        .value;
+
+    const goalAmount = document
+        .getElementById("goalAmount")
+        .value
+        .replace(/,/g, "");
+
+    const moneySetup = {
+        startingBalance: Number(startingBalance) || 0,
+        monthlyIncome: Number(monthlyIncome) || 0,
+        monthlyBudget: Number(monthlyBudget) || 0,
+        goalName: goalName,
+        goalAmount: Number(goalAmount) || 0
+    };
+
+    localStorage.setItem(
+        "moneySetup",
+        JSON.stringify(moneySetup)
+    );
+
     document
         .getElementById("setupStep4")
         .classList.remove("active");
@@ -282,7 +319,6 @@ function finishMoneySetup() {
         .classList.add("active");
 
     window.scrollTo(0, 0);
-
 }
 
 
