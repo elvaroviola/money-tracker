@@ -362,6 +362,7 @@ function enterMoneyWorld() {
         "0% completed";
 
     renderTransactions();
+    updateBudgetOverview();
 
     window.scrollTo(0, 0);
 }
@@ -581,11 +582,9 @@ function saveTransaction() {
 
 
     closeTransactionForm();
-
-
     renderTransactions();
-
     updateCurrentBalance();
+    updateBudgetOverview();
 
 }
 
@@ -791,3 +790,162 @@ document.addEventListener(
 
     }
 );
+
+/* ===================================
+   BUDGET TRACKING
+=================================== */
+
+function updateBudgetOverview() {
+
+    const savedData =
+        localStorage.getItem("moneySetup");
+
+    if (!savedData) {
+        return;
+    }
+
+    const moneyData =
+        JSON.parse(savedData);
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+
+    // Ambil bulan dan tahun sekarang
+
+    const now = new Date();
+
+    const currentMonth =
+        now.getMonth();
+
+    const currentYear =
+        now.getFullYear();
+
+
+    // Hitung total expense bulan ini
+
+    let spent = 0;
+
+
+    transactions.forEach(
+        function (transaction) {
+
+            if (transaction.type !== "expense") {
+                return;
+            }
+
+
+            const transactionDate =
+                new Date(transaction.date);
+
+
+            if (
+                transactionDate.getMonth() === currentMonth &&
+                transactionDate.getFullYear() === currentYear
+            ) {
+
+                spent +=
+                    Number(transaction.amount) || 0;
+
+            }
+
+        }
+    );
+
+
+    const monthlyBudget =
+        Number(moneyData.monthlyBudget) || 0;
+
+
+    const remaining =
+        Math.max(
+            monthlyBudget - spent,
+            0
+        );
+
+
+    // Persentase budget yang sudah digunakan
+
+    let percentage = 0;
+
+
+    if (monthlyBudget > 0) {
+
+        percentage =
+            (spent / monthlyBudget) * 100;
+
+    }
+
+
+    percentage =
+        Math.min(
+            percentage,
+            100
+        );
+
+
+    // Update angka
+
+    const spentElement =
+        document.getElementById(
+            "dashboardSpent"
+        );
+
+    const remainingElement =
+        document.getElementById(
+            "dashboardRemaining"
+        );
+
+
+    if (spentElement) {
+
+        spentElement.textContent =
+            formatRupiah(spent);
+
+    }
+
+
+    if (remainingElement) {
+
+        remainingElement.textContent =
+            formatRupiah(remaining);
+
+    }
+
+
+    // Update progress bar
+
+    const progressFill =
+        document.getElementById(
+            "budgetProgressFill"
+        );
+
+
+    if (progressFill) {
+
+        progressFill.style.width =
+            percentage + "%";
+
+    }
+
+
+    // Update text
+
+    const progressText =
+        document.getElementById(
+            "budgetProgressText"
+        );
+
+
+    if (progressText) {
+
+        progressText.textContent =
+            formatRupiah(spent) +
+            " spent of " +
+            formatRupiah(monthlyBudget);
+
+    }
+
+}
