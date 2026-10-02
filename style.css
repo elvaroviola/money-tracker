@@ -1925,3 +1925,254 @@ body {
     }
 
 }
+
+/* ================================
+   ADD TRANSACTION FORM
+================================ */
+
+.transaction-form-page {
+    min-height: 100vh;
+    background: rgba(253, 243, 239, 0.98);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.transaction-form-card {
+    width: 100%;
+    max-width: 520px;
+    background: #fffaf7;
+    border: 1px solid #ecd7d1;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 18px 45px rgba(126, 76, 65, 0.13);
+}
+
+.transaction-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.transaction-form-eyebrow {
+    color: #b56e64;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    margin-bottom: 7px;
+}
+
+.transaction-form-header h2 {
+    color: #6b4035;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.transaction-form-header p {
+    color: #a17a70;
+    font-size: 11px;
+}
+
+.close-transaction-button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f6e5e0;
+    color: #9d6f66;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-transaction-button:hover {
+    background: #ead0ca;
+    color: #6b4035;
+}
+
+
+/* Transaction Type */
+
+.transaction-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 23px;
+}
+
+.transaction-type-button {
+    border: 1px solid #ecd7d1;
+    background: #fffaf7;
+    color: #987166;
+    border-radius: 13px;
+    padding: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.transaction-type-button:hover {
+    border-color: #dca9a0;
+}
+
+.transaction-type-button.selected {
+    background: #ead0ca;
+    border-color: #c9786d;
+    color: #6b4035;
+}
+
+
+/* Fields */
+
+.transaction-field {
+    margin-bottom: 17px;
+}
+
+.transaction-field label {
+    display: block;
+    color: #6b4035;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.transaction-money-input {
+    display: flex;
+    align-items: center;
+    background: #fffaf7;
+    border: 1px solid #e5cbc4;
+    border-radius: 13px;
+    padding: 4px 15px;
+    transition: all 0.2s ease;
+}
+
+.transaction-money-input:focus-within {
+    border-color: #c9786d;
+    box-shadow: 0 0 0 3px rgba(201, 120, 109, 0.10);
+}
+
+.transaction-money-input span {
+    color: #b56e64;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.transaction-money-input input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #6b4035;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    padding: 11px 0;
+}
+
+.transaction-money-input input::placeholder {
+    color: #d1b7af;
+}
+
+
+/* Select & Text Input */
+
+.transaction-select,
+.transaction-text-input {
+    width: 100%;
+    border: 1px solid #e5cbc4;
+    background: #fffaf7;
+    color: #6b4035;
+    border-radius: 13px;
+    padding: 12px 14px;
+    outline: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+}
+
+.transaction-select:focus,
+.transaction-text-input:focus {
+    border-color: #c9786d;
+    box-shadow: 0 0 0 3px rgba(201, 120, 109, 0.10);
+}
+
+.transaction-text-input::placeholder {
+    color: #c5aaa2;
+}
+
+
+/* Buttons */
+
+.transaction-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.transaction-cancel-button {
+    border: none;
+    background: transparent;
+    color: #a98278;
+    padding: 12px 16px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.transaction-cancel-button:hover {
+    color: #6b4035;
+}
+
+.transaction-save-button {
+    border: none;
+    background: #c9786d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.transaction-save-button:hover {
+    background: #b9685d;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(185, 104, 93, 0.15);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .transaction-form-page {
+        padding: 20px 15px;
+    }
+
+    .transaction-form-card {
+        padding: 23px 19px;
+    }
+
+    .transaction-form-header h2 {
+        font-size: 22px;
+    }
+
+    .transaction-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .transaction-cancel-button,
+    .transaction-save-button {
+        width: 100%;
+    }
+
+}
