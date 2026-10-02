@@ -1139,6 +1139,208 @@
     </div>
 
 </section>
+
+<!-- Add Transaction Form -->
+
+<section
+    class="transaction-form-page"
+    id="transactionFormPage"
+>
+
+    <div class="transaction-form-card">
+
+        <div class="transaction-form-header">
+
+            <div>
+                <p class="transaction-form-eyebrow">
+                    MONEY ACTIVITY
+                </p>
+
+                <h2>
+                    Add Transaction
+                </h2>
+
+                <p>
+                    Keep track of where your money goes ♡
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="close-transaction-button"
+                onclick="closeTransactionForm()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- Transaction Type -->
+
+        <div class="transaction-type">
+
+            <button
+                type="button"
+                class="transaction-type-button selected"
+                id="incomeTypeButton"
+                onclick="selectTransactionType('income')"
+            >
+                ✦ Income
+            </button>
+
+            <button
+                type="button"
+                class="transaction-type-button"
+                id="expenseTypeButton"
+                onclick="selectTransactionType('expense')"
+            >
+                ♡ Expense
+            </button>
+
+        </div>
+
+
+        <!-- Amount -->
+
+        <div class="transaction-field">
+
+            <label for="transactionAmount">
+                Amount
+            </label>
+
+            <div class="transaction-money-input">
+
+                <span>Rp</span>
+
+                <input
+                    type="text"
+                    id="transactionAmount"
+                    placeholder="0"
+                    inputmode="numeric"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Category -->
+
+        <div class="transaction-field">
+
+            <label for="transactionCategory">
+                Category
+            </label>
+
+            <select
+                id="transactionCategory"
+                class="transaction-select"
+            >
+
+                <option value="">
+                    Choose a category
+                </option>
+
+                <option value="Food">
+                    🍜 Food
+                </option>
+
+                <option value="Transport">
+                    🚆 Transport
+                </option>
+
+                <option value="Shopping">
+                    🛍️ Shopping
+                </option>
+
+                <option value="Bills">
+                    🏠 Bills
+                </option>
+
+                <option value="Beauty">
+                    💄 Beauty
+                </option>
+
+                <option value="Entertainment">
+                    🎧 Entertainment
+                </option>
+
+                <option value="Education">
+                    📚 Education
+                </option>
+
+                <option value="Other">
+                    ♡ Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Date -->
+
+        <div class="transaction-field">
+
+            <label for="transactionDate">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="transactionDate"
+                class="transaction-text-input"
+            >
+
+        </div>
+
+
+        <!-- Note -->
+
+        <div class="transaction-field">
+
+            <label for="transactionNote">
+                Note
+            </label>
+
+            <input
+                type="text"
+                id="transactionNote"
+                class="transaction-text-input"
+                placeholder="What was this for?"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <!-- Buttons -->
+
+        <div class="transaction-form-actions">
+
+            <button
+                type="button"
+                class="transaction-cancel-button"
+                onclick="closeTransactionForm()"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="transaction-save-button"
+                onclick="saveTransaction()"
+            >
+                Save Transaction ♡
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
         
     </div>
 
