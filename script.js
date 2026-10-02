@@ -337,37 +337,31 @@ function enterMoneyWorld() {
 
     const moneyData = JSON.parse(savedData);
 
-    // Sembunyikan Money Setup
     document.getElementById("moneySetupPage").style.display = "none";
 
-    // Tampilkan Dashboard
     document.getElementById("dashboardPage").style.display = "block";
 
-    // Tampilkan Starting Balance
     document.getElementById("dashboardBalance").textContent =
         formatRupiah(moneyData.startingBalance);
 
-    // Tampilkan Monthly Income
     document.getElementById("dashboardIncome").textContent =
         formatRupiah(moneyData.monthlyIncome);
 
-    // Tampilkan Monthly Budget
     document.getElementById("dashboardBudget").textContent =
         formatRupiah(moneyData.monthlyBudget);
 
-    // Tampilkan Goal Name
     document.getElementById("dashboardGoalName").textContent =
         moneyData.goalName || "Your Goal";
 
-    // Tampilkan Goal Amount
     document.getElementById("dashboardGoalAmount").textContent =
         formatRupiah(moneyData.goalAmount);
 
-    // Goal baru dimulai dari 0%
     document.getElementById("goalProgressFill").style.width = "0%";
 
     document.getElementById("goalProgressText").textContent =
         "0% completed";
+
+    renderTransactions();
 
     window.scrollTo(0, 0);
 }
@@ -416,3 +410,384 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+/* ===================================
+   TRANSACTION SYSTEM
+=================================== */
+
+let selectedTransactionType = "income";
+
+
+function openTransactionForm() {
+
+    const form = document.getElementById("transactionFormPage");
+
+    if (form) {
+        form.style.display = "flex";
+    }
+
+    const dateInput = document.getElementById("transactionDate");
+
+    if (dateInput && !dateInput.value) {
+
+        const today = new Date();
+
+        const year = today.getFullYear();
+
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+
+        const day = String(today.getDate()).padStart(2, "0");
+
+        dateInput.value = `${year}-${month}-${day}`;
+    }
+
+    window.scrollTo(0, 0);
+}
+
+
+function closeTransactionForm() {
+
+    const form = document.getElementById("transactionFormPage");
+
+    if (form) {
+        form.style.display = "none";
+    }
+
+}
+
+
+function selectTransactionType(type) {
+
+    selectedTransactionType = type;
+
+    const incomeButton =
+        document.getElementById("incomeTypeButton");
+
+    const expenseButton =
+        document.getElementById("expenseTypeButton");
+
+    incomeButton.classList.remove("selected");
+
+    expenseButton.classList.remove("selected");
+
+    if (type === "income") {
+        incomeButton.classList.add("selected");
+    } else {
+        expenseButton.classList.add("selected");
+    }
+
+}
+
+
+function saveTransaction() {
+
+    const amountInput =
+        document.getElementById("transactionAmount");
+
+    const categoryInput =
+        document.getElementById("transactionCategory");
+
+    const dateInput =
+        document.getElementById("transactionDate");
+
+    const noteInput =
+        document.getElementById("transactionNote");
+
+
+    const amount =
+        Number(
+            amountInput.value.replace(/,/g, "")
+        ) || 0;
+
+    const category =
+        categoryInput.value;
+
+    const date =
+        dateInput.value;
+
+    const note =
+        noteInput.value.trim();
+
+
+    if (amount <= 0) {
+
+        alert("Please enter an amount ♡");
+
+        return;
+
+    }
+
+
+    if (!category) {
+
+        alert("Please choose a category ♡");
+
+        return;
+
+    }
+
+
+    if (!date) {
+
+        alert("Please choose a date ♡");
+
+        return;
+
+    }
+
+
+    const transaction = {
+
+        id: Date.now(),
+
+        type: selectedTransactionType,
+
+        amount: amount,
+
+        category: category,
+
+        date: date,
+
+        note: note
+
+    };
+
+
+    const existingTransactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+
+    existingTransactions.push(transaction);
+
+
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(existingTransactions)
+    );
+
+
+    // Reset form
+
+    amountInput.value = "";
+
+    categoryInput.value = "";
+
+    noteInput.value = "";
+
+
+    selectTransactionType("income");
+
+
+    closeTransactionForm();
+
+
+    renderTransactions();
+
+    updateCurrentBalance();
+
+}
+
+
+function renderTransactions() {
+
+    const transactionList =
+        document.getElementById("transactionList");
+
+    const emptyState =
+        document.getElementById("emptyTransactions");
+
+
+    if (!transactionList || !emptyState) {
+        return;
+    }
+
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+
+    transactionList.innerHTML = "";
+
+
+    if (transactions.length === 0) {
+
+        emptyState.style.display = "block";
+
+        return;
+
+    }
+
+
+    emptyState.style.display = "none";
+
+
+    const sortedTransactions =
+        [...transactions].sort(
+            function (a, b) {
+                return new Date(b.date) - new Date(a.date);
+            }
+        );
+
+
+    sortedTransactions.forEach(
+        function (transaction) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "transaction-item";
+
+
+            const icon =
+                transaction.type === "income"
+                    ? "✦"
+                    : "♡";
+
+
+            const sign =
+                transaction.type === "income"
+                    ? "+"
+                    : "-";
+
+
+            const amountClass =
+                transaction.type === "income"
+                    ? "income"
+                    : "expense";
+
+
+            const noteText =
+                transaction.note
+                    ? transaction.note
+                    : transaction.category;
+
+
+            item.innerHTML = `
+
+                <div class="transaction-info">
+
+                    <div class="transaction-icon">
+                        ${icon}
+                    </div>
+
+                    <div>
+
+                        <div class="transaction-name">
+                            ${noteText}
+                        </div>
+
+                        <div class="transaction-category">
+                            ${transaction.category}
+                            ·
+                            ${transaction.date}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="transaction-amount ${amountClass}"
+                >
+                    ${sign}${formatRupiah(transaction.amount)}
+                </div>
+
+            `;
+
+
+            transactionList.appendChild(item);
+
+        }
+    );
+
+}
+
+
+function updateCurrentBalance() {
+
+    const savedData =
+        localStorage.getItem("moneySetup");
+
+    if (!savedData) {
+        return;
+    }
+
+
+    const moneyData =
+        JSON.parse(savedData);
+
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+
+    let balance =
+        Number(moneyData.startingBalance) || 0;
+
+
+    transactions.forEach(
+        function (transaction) {
+
+            if (transaction.type === "income") {
+
+                balance += Number(transaction.amount) || 0;
+
+            } else {
+
+                balance -= Number(transaction.amount) || 0;
+
+            }
+
+        }
+    );
+
+
+    const balanceElement =
+        document.getElementById("dashboardBalance");
+
+
+    if (balanceElement) {
+
+        balanceElement.textContent =
+            formatRupiah(balance);
+
+    }
+
+}
+
+
+/* Transaction amount formatting */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const transactionAmount =
+            document.getElementById(
+                "transactionAmount"
+            );
+
+
+        if (transactionAmount) {
+
+            transactionAmount.addEventListener(
+                "input",
+                function () {
+
+                    formatMoneyInput(this);
+
+                }
+            );
+
+        }
+
+    }
+);
