@@ -1085,6 +1085,61 @@
 
         </section>
 
+<!-- Recent Transactions -->
+
+<section class="transactions-card">
+
+    <div class="transactions-header">
+
+        <div>
+            <p class="transactions-eyebrow">
+                YOUR MONEY ACTIVITY
+            </p>
+
+            <h2>
+                Recent Transactions
+            </h2>
+        </div>
+
+        <button
+            class="add-transaction-button"
+            onclick="openTransactionForm()"
+        >
+            + Add Transaction
+        </button>
+
+    </div>
+
+
+    <div
+        class="empty-transactions"
+        id="emptyTransactions"
+    >
+
+        <img
+            src="assets/empty%20budget.png"
+            alt="No transactions"
+        >
+
+        <h3>
+            No transactions yet ♡
+        </h3>
+
+        <p>
+            Start by adding your first income or expense.
+        </p>
+
+    </div>
+
+
+    <div
+        class="transaction-list"
+        id="transactionList"
+    >
+    </div>
+
+</section>
+        
     </div>
 
 </main>
