@@ -417,9 +417,52 @@ document.addEventListener("DOMContentLoaded", function () {
 =================================== */
 
 let selectedTransactionType = "income";
+let editingTransactionId = null;
+
+function editTransaction(id) {
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+    const transaction =
+        transactions.find(
+            function (item) {
+                return item.id === id;
+            }
+        );
+
+    if (!transaction) {
+        return;
+    }
+
+    editingTransactionId = id;
+
+    document.getElementById("transactionAmount").value =
+        Number(transaction.amount).toLocaleString("en-US");
+
+    document.getElementById("transactionCategory").value =
+        transaction.category;
+
+    document.getElementById("transactionDate").value =
+        transaction.date;
+
+    document.getElementById("transactionNote").value =
+        transaction.note || "";
+
+    selectTransactionType(transaction.type);
+
+    document.getElementById("transactionFormPage").style.display =
+        "flex";
+
+    window.scrollTo(0, 0);
+}
 
 
 function openTransactionForm() {
+
+editingTransactionId = null;
 
     const form = document.getElementById("transactionFormPage");
 
@@ -479,7 +522,6 @@ function selectTransactionType(type) {
 
 }
 
-
 function saveTransaction() {
 
     const amountInput =
@@ -537,39 +579,91 @@ function saveTransaction() {
     }
 
 
-    const transaction = {
-
-        id: Date.now(),
-
-        type: selectedTransactionType,
-
-        amount: amount,
-
-        category: category,
-
-        date: date,
-
-        note: note
-
-    };
-
-
-    const existingTransactions =
+    const transactions =
         JSON.parse(
             localStorage.getItem("transactions")
         ) || [];
 
 
-    existingTransactions.push(transaction);
+    /* ================================
+       EDIT EXISTING TRANSACTION
+    ================================= */
+
+    if (editingTransactionId !== null) {
+
+        const transaction =
+            transactions.find(
+                function (item) {
+                    return item.id === editingTransactionId;
+                }
+            );
+
+
+        if (transaction) {
+
+            transaction.type =
+                selectedTransactionType;
+
+            transaction.amount =
+                amount;
+
+            transaction.category =
+                category;
+
+            transaction.date =
+                date;
+
+            transaction.note =
+                note;
+
+        }
+
+
+    } else {
+
+        /* ================================
+           CREATE NEW TRANSACTION
+        ================================= */
+
+        const transaction = {
+
+            id: Date.now(),
+
+            type:
+                selectedTransactionType,
+
+            amount:
+                amount,
+
+            category:
+                category,
+
+            date:
+                date,
+
+            note:
+                note
+
+        };
+
+
+        transactions.push(transaction);
+
+    }
 
 
     localStorage.setItem(
         "transactions",
-        JSON.stringify(existingTransactions)
+        JSON.stringify(transactions)
     );
 
 
-    // Reset form
+    /* Reset edit mode */
+
+    editingTransactionId = null;
+
+
+    /* Reset form */
 
     amountInput.value = "";
 
@@ -582,12 +676,18 @@ function saveTransaction() {
 
 
     closeTransactionForm();
+
+
+    /* Refresh Dashboard */
+
     renderTransactions();
+
     updateCurrentBalance();
+
     updateBudgetOverview();
 
 }
-
+   
 function renderTransactions() {
 
     const transactionList =
