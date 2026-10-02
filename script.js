@@ -588,7 +588,6 @@ function saveTransaction() {
 
 }
 
-
 function renderTransactions() {
 
     const transactionList =
@@ -691,10 +690,35 @@ function renderTransactions() {
                 </div>
 
 
-                <div
-                    class="transaction-amount ${amountClass}"
-                >
-                    ${sign}${formatRupiah(transaction.amount)}
+                <div class="transaction-right">
+
+                    <div
+                        class="transaction-amount ${amountClass}"
+                    >
+                        ${sign}${formatRupiah(transaction.amount)}
+                    </div>
+
+
+                    <div class="transaction-actions">
+
+                        <button
+                            type="button"
+                            class="transaction-edit-button"
+                            onclick="editTransaction(${transaction.id})"
+                        >
+                            Edit
+                        </button>
+
+                        <button
+                            type="button"
+                            class="transaction-delete-button"
+                            onclick="deleteTransaction(${transaction.id})"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
                 </div>
 
             `;
@@ -707,6 +731,46 @@ function renderTransactions() {
 
 }
 
+function deleteTransaction(id) {
+
+    const confirmed =
+        confirm(
+            "Delete this transaction? ♡"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const transactions =
+        JSON.parse(
+            localStorage.getItem("transactions")
+        ) || [];
+
+
+    const updatedTransactions =
+        transactions.filter(
+            function (transaction) {
+                return transaction.id !== id;
+            }
+        );
+
+
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(updatedTransactions)
+    );
+
+
+    renderTransactions();
+
+    updateCurrentBalance();
+
+    updateBudgetOverview();
+
+}
 
 function updateCurrentBalance() {
 
