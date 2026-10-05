@@ -420,7 +420,11 @@ let selectedTransactionType = "income";
 let editingTransactionId = null;
 
 function editTransaction(id) {
+document.getElementById("transactionFormTitle").textContent =
+    "Edit Transaction";
 
+document.getElementById("transactionSaveText").textContent =
+    "Save Changes ♡";
     const transactions =
         JSON.parse(
             localStorage.getItem("transactions")
@@ -463,6 +467,11 @@ function editTransaction(id) {
 function openTransactionForm() {
 
 editingTransactionId = null;
+   document.getElementById("transactionFormTitle").textContent =
+    "Add Transaction";
+
+   document.getElementById("transactionSaveText").textContent =
+    "Save Transaction ♡";
 
     const form = document.getElementById("transactionFormPage");
 
